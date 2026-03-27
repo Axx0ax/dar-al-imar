@@ -529,6 +529,7 @@ const Configurator = () => {
       scene.add(new THREE.Points(pg,new THREE.PointsMaterial({color:'#D4A017',size:.06,transparent:true,opacity:.32,sizeAttenuation:true})));
       threeRef.current = { scene, camera, renderer, meshes:[], shadMeshes:[], ctMeshes:[], theta:0.62, phi:0.44, radius:13.5, drag:false, lx:0, ly:0, autoSpin:true };
       buildModel();
+      const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
       const { current:t } = threeRef;
       cv.addEventListener('mousedown',e=>{t.drag=true;t.lx=e.clientX;t.ly=e.clientY;t.autoSpin=false;clearTimeout(t.spinTimeout)});
       window.addEventListener('mouseup',()=>{t.drag=false;t.spinTimeout=setTimeout(()=>t.autoSpin=true,3200)});
