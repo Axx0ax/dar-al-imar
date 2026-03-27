@@ -415,12 +415,10 @@ const Configurator = () => {
   const [progPct, setProgPct] = useState(0);
   const [ctaOk, setCtaOk] = useState(false);
   const [formSent, setFormSent] = useState(false);
-  const [selSrv, setSelSrv] = useState('حكومي / مؤسسي');
 
   const THREE_LIB = useRef(null);
 
   const L = (a,b,t) => a+(b-a)*t;
-  const clamp = (v,n,x) => Math.max(n,Math.min(x,v));
 
   const refreshStats = useCallback(() => {
     const st = stRef.current;
@@ -582,7 +580,6 @@ const Configurator = () => {
   };
 
   const handlePCta = () => { if(ctaOk) return; setCtaOk(true); setTimeout(()=>setCtaOk(false),4500); };
-  const handleSubmit = () => { if(formSent) return; setFormSent(true); setTimeout(()=>setFormSent(false),5000); };
 
   return (
     <section className="dai-cfg" id="configurator">
