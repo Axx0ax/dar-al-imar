@@ -399,7 +399,7 @@ const ShowcaseCard = ({ project, num, nameAr, nameEn, tag, delay }) => {
   );
 };
 
-/* ─── Pure utility (stable reference outside component) ─── */
+/* ─── Pure math utility — defined outside component for stable reference ─── */
 const L = (a, b, t) => a + (b - a) * t;
 
 /* ─── Three.js Configurator ─── */
@@ -489,7 +489,7 @@ const Configurator = () => {
     if(st.type==='commercial'){const sp=new THREE.Mesh(new THREE.ConeGeometry(.13,3.2,4),mat({color:aC,metalness:.97,roughness:.04,emissive:aC,emissiveIntensity:.26}));sp.position.y=totH+1.6+.1;sp.rotation.y=Math.PI/4;push(sp,threeRef.current.meshes);const gl=new THREE.Mesh(new THREE.SphereGeometry(.07,10,10),mat({color:'#FFDD44',emissive:'#FFDD44',emissiveIntensity:2.5,metalness:0,roughness:0}));gl.position.y=totH+3.2+.1;push(gl,threeRef.current.meshes)}
     else if(st.type==='government'){[-1,1].forEach(s=>{const ar=new THREE.Mesh(new THREE.TorusGeometry(bw*.22,.1,8,30,Math.PI),mat({color:aC,metalness:.78,roughness:.18,emissive:aC,emissiveIntensity:.18}));ar.position.set(s*bw*.28,totH+.32,0);ar.rotation.x=-Math.PI/2;push(ar,threeRef.current.meshes)});const pole=new THREE.Mesh(new THREE.CylinderGeometry(.022,.022,1.6,6),mat({color:dC,metalness:.85,roughness:.08}));pole.position.y=totH+.8+.1;push(pole,threeRef.current.meshes)}
     else{const mq=new THREE.Mesh(new THREE.BoxGeometry(.32,1.1,.32),mat({color:aC,metalness:.4,roughness:.58,emissive:aC,emissiveIntensity:.06}));mq.position.y=totH+.55+.11;push(mq,threeRef.current.meshes)}
-  }, [L]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     // Guard: only ever init once even in StrictMode double-mount
