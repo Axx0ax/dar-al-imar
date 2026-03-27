@@ -399,6 +399,9 @@ const ShowcaseCard = ({ project, num, nameAr, nameEn, tag, delay }) => {
   );
 };
 
+/* ─── Pure utility (stable reference outside component) ─── */
+const L = (a, b, t) => a + (b - a) * t;
+
 /* ─── Three.js Configurator ─── */
 const Configurator = () => {
   const viewerRef = useRef();
@@ -414,11 +417,8 @@ const Configurator = () => {
   const [stats, setStats] = useState({ F:8, S:'40%', H:'—' });
   const [progPct, setProgPct] = useState(0);
   const [ctaOk, setCtaOk] = useState(false);
-  const [formSent, setFormSent] = useState(false);
 
   const THREE_LIB = useRef(null);
-
-  const L = (a,b,t) => a+(b-a)*t;
 
   const refreshStats = useCallback(() => {
     const st = stRef.current;
